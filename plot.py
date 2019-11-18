@@ -149,6 +149,9 @@ def climbing_trends(df):
     ax.set_xlim([dates[0] -timedelta(days=1), dates[-1] + timedelta(days=1)])
 
     ax.set_ylim([-0.5,10])
+    
+    
+    ax.set_title("Climbing trends over time (mean level succeeded/failed/flashed)")
     grade_colour_bars(ax)
     ax.legend()
     return fig    
@@ -204,6 +207,10 @@ def scatterplotclimbs(df, attempt=0):
     ax.set_ylim([-0.5, 10])
     grade_colour_bars(ax)
     ax.set_xlim([uniquedates.min()-np.timedelta64(1,'D'),uniquedates.max()+np.timedelta64(1, 'D')])
+    if attempt==0:
+        ax.set_title("All successful climbs")
+    if attempt==1:
+        ax.set_title("All attempted (and failed) climbs")
     return fig
 
 
